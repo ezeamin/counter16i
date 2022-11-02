@@ -1,9 +1,11 @@
 import Counter from "./components/Counter/Counter";
+import RandomColor from "./components/RandomColor/RandomColor";
 
 const App = () => {
   return (
     <div>
-      <Counter />
+      {/* <Counter /> */}
+      <RandomColor />
     </div>
   );
 }

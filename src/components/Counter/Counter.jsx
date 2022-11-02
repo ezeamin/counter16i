@@ -1,19 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Counter = () => {
-  //   let valorContador = 0;
   const [valorContador, setValorContador] = useState(0);
+  // valor, funcion para cambiar valor = useState(valorInicial)
 
-  const handleClick = () => {
-    console.log('hiciste click');
-    setValorContador(valorContador + 1);
-    console.log(valorContador);
+  const handleClick = (accion) => {
+    switch (accion) {
+      case 'sumar':
+        setValorContador(valorContador + 1);
+        break;
+      case 'restar':
+        setValorContador(valorContador - 1);
+        break;
+      case 'reset':
+        setValorContador(0);
+        break;
+      default:
+        break;
+    }
   };
+
+  useEffect(() => {
+    console.log(valorContador);
+  }, [valorContador]);
 
   return (
     <>
       <h1>{valorContador}</h1>
-      <button onClick={handleClick}>+</button>
+      <button onClick={() => handleClick('sumar')}>+</button>
+      <button onClick={() => handleClick('restar')}>-</button>
+      <button onClick={() => handleClick('reset')}>Reset</button>
     </>
   );
 };
